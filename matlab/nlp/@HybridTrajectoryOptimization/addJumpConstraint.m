@@ -65,7 +65,7 @@ function obj = addJumpConstraint(obj, edge, src, tar, bounds, varargin)
     if strcmp(edge.Plant.Type,'SecondOrder')
         %% state derivative continuity (src <-> edge)
         dx_s = src.Plant.States.dx;
-        dx_e = SymVariable('xp',size(x_s));
+        dx_e = SymVariable('dxp',size(dx_s));
         dx_cont_src = SymFunction(['dxMinusCont_' edge.Name],dx_s-dx_e,{dx_s,dx_e});
         dx_src_cstr = NlpFunction('Name',['dxMinusCont_' edge.Name],...
             'Dimension',src.Plant.numState,...
