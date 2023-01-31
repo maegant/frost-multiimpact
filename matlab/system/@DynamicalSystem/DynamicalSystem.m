@@ -102,6 +102,9 @@ classdef (Abstract) DynamicalSystem < handle & matlab.mixin.Copyable
         % Add state variables
         obj = addState(obj, varargin);
         
+        % Add multiple state variables
+        obj = addMultiState(obj, varargin);
+        
         % Add input variables
         obj = addInput(obj, category, name, var, gf, varargin);
         

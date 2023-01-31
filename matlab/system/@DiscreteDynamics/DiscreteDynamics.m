@@ -98,6 +98,29 @@ classdef DiscreteDynamics < DynamicalSystem
             else
                 error('Please define the type of the system first.');
             end
+            
+        end
+        
+        function obj = addMultiState(obj, xnImp, dxnImp)
+            % overload the superclass 'addState' method with fixed state
+            % fields
+            % 
+            % Parameters:            
+            % x: the pre-impact state variables @type SymVariable
+            % xn: the identity edge state variables @type SymVariable
+            % xnImp: the post-impact state variables @type SymVariable
+            % dx: the pre-impact first order derivative of state variables @type SymVariable
+            % dxn: the identity ege first order derivative of state variables @type SymVariable
+            % dxnImp: the post-impact first order derivative of state variables @type SymVariable
+            
+        
+            if strcmp(obj.Type,'FirstOrder')
+                obj = addMultiState@DynamicalSystem(obj,'xnImp',xnImp);
+            elseif strcmp(obj.Type, 'SecondOrder')
+                obj = addMultiState@DynamicalSystem(obj,'xnImp',xnImp, 'dxnImp',dxnImp);
+            else
+                error('Please define the type of the system first.');
+            end
         end
         
     end
