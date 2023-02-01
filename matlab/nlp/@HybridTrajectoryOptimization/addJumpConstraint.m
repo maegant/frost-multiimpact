@@ -12,9 +12,7 @@ function obj = addJumpConstraint(obj, edge, src, tar, bounds, varargin)
     % tar: the target node NLP @type TrajectoryOptimization
     % bounds: the boundary values @type struct
     % varargin: extra argument @type varargin
-    
-    warning('Hacky Hacky Hacky Hacky');
-    
+       
     
     %% continuity of time
     t_s = SymVariable('ts',[2,1]);
@@ -60,7 +58,7 @@ function obj = addJumpConstraint(obj, edge, src, tar, bounds, varargin)
         'ub', 0,...
         'Type','Linear',...
         'SymFun',x_cont_tar,...
-        'DepVariables',[edge.OptVarTable.xnImp(1);tar.OptVarTable.x(1)]);
+        'DepVariables',[edge.OptVarTable.xn(1);tar.OptVarTable.x(1)]);
     edge.addConstraint('xPlusCont','first',x_tar_cstr);
     
     if strcmp(edge.Plant.Type,'SecondOrder')
@@ -87,7 +85,7 @@ function obj = addJumpConstraint(obj, edge, src, tar, bounds, varargin)
             'ub', 0,...
             'Type','Linear',...
             'SymFun',dx_cont_tar,...
-            'DepVariables',[edge.OptVarTable.dxnImp(1);tar.OptVarTable.dx(1)]);
+            'DepVariables',[edge.OptVarTable.dxn(1);tar.OptVarTable.dx(1)]);
         edge.addConstraint('dxPlusCont','first',dx_tar_cstr);
     end
     
