@@ -1,13 +1,13 @@
-function [h] = hline(y, linetype)
+function [h] = hline(y, varargin)
 
 if nargin < 2
-    linetype={'r:'};
+    varargin={'r:'};
 end
 
 xlims = get(gca,'xlim');
 count = length(y);
 xs = repmat(xlims, count, 1);
 ys = repmat(y(:), 1, 2);
-h = plot(xs', ys', linetype{:});
+h = plot(xs', ys', varargin{:});
 
 end
