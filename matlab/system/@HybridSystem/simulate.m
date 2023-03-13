@@ -72,7 +72,7 @@ function logger = simulate(obj, t0, x0, tf, options, varargin)
         log_idx = log_idx + 1;
         logger(log_idx) = feval(obj.Options.Logger, cur_domain);  %#ok<AGROW>
         
-        disp(['Simulating ',cur_domain.Name]);
+%         disp(['Simulating ',cur_domain.Name]);
         
         
         
@@ -92,7 +92,7 @@ function logger = simulate(obj, t0, x0, tf, options, varargin)
         cur_guard = cur_edge.Guard{1};
         cur_gurad_param = cur_edge.Param{1};
         
-        disp(['Calculating Impact Map at Guard, ', cur_edge.Guard{1}.Name]);
+%         disp(['Calculating Impact Map at Guard, ', cur_edge.Guard{1}.Name]);
 %         disp()
 
         % update states and time

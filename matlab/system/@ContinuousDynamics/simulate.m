@@ -138,7 +138,7 @@ function [sol, params] = simulate(obj, t0, x0, tf, controller, params, logger, e
     if isfield(sol,'xe') && ~isempty(sol.xe)
       calcDynamics(obj, sol.xe, sol.ye, controller, params, logger);
       updateLastLog(logger);
-      disp('Impact Detected!')
+%       disp('Impact Detected!')
     else
       sol.xe = sol.x(end);
       sol.ye = sol.y(:,end);
@@ -147,7 +147,7 @@ function [sol, params] = simulate(obj, t0, x0, tf, controller, params, logger, e
 %       end
       calcDynamics(obj, sol.xe, sol.ye, controller, params, logger);
       updateLastLog(logger);
-      disp('End of Phase!')
+%       disp('End of Phase!')
     end
     % post-process
     if ~isempty(obj.PostProcess)
