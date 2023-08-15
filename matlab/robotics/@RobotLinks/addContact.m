@@ -75,6 +75,10 @@ function obj = addContact(obj, contact, fric_coef, geometry, load_path)
             label{i} = label_full{find(contact.WrenchBase(:,i))};         %#ok<FNDSB>
         end
         
+        if strcmp(contact.Type,'PointContactWithoutFriction')
+            constr_jac = tomatrix(constr_jac)';
+        end
+        
         % create a holonomic constraint object
         contact_constr = HolonomicConstraint(obj,...
             constr, contact.Name,...

@@ -106,6 +106,7 @@ classdef IOFeedback < Controller
                 end
                 % calculate the desired outputs
                 y_d{i} = calcDesired(y_i, t, q, dq, a, p);
+                
                 % calculate the phase variable
                 tau{i} = calcPhaseVariable(y_i, t, q, dq, p);
                 

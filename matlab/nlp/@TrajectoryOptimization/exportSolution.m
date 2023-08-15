@@ -63,6 +63,9 @@ function [tspan, states, inputs, params] = exportSolution(obj, sol)
         for j=1:length(input_names)
             name = input_names{j};            
             inputs.(name) = sol([vars.(name).Indices]);
+            if isvector(sol([vars.(name).Indices]))
+                inputs.(name) = reshape(inputs.(name),size([vars.(name).Indices]));
+            end
         end
     end
     
@@ -73,6 +76,9 @@ function [tspan, states, inputs, params] = exportSolution(obj, sol)
         for j=1:length(input_names)
             name = input_names{j};            
             inputs.(name) = sol([vars.(name).Indices]);
+            if isvector(sol([vars.(name).Indices]))
+                inputs.(name) = reshape(inputs.(name),size([vars.(name).Indices]));
+            end
         end
     end
     
